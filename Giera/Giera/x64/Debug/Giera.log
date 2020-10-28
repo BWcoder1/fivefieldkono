@@ -1,0 +1,11 @@
+﻿  Giera.cpp
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(488,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(545,50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(515,18): warning C4101: 'finish': unreferenced local variable
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(514,23): warning C4101: 'dir': unreferenced local variable
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(515,26): warning C4101: 'canMakemove': unreferenced local variable
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(514,20): warning C4101: 'y': unreferenced local variable
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(514,17): warning C4101: 'x': unreferenced local variable
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(573,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\Giera\Giera.cpp(88): warning C4715: 'makeMove': not all control paths return a value
+  Giera.vcxproj -> C:\Users\dawid\Desktop\Uni\fivefieldkono\Giera\x64\Debug\Giera.exe

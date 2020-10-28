@@ -243,7 +243,7 @@
             liczba = temp[1];
             y = (int)liczba - 48;
 
-            if (tablica.size() <= 2 && asd == 4) {
+            if (tablica.size() <= 3 && asd == 4) {
                 //std::cout << "nie ma ruchow" << std::endl;
                 break;
             }
@@ -272,7 +272,7 @@
                     }
                     if (!okej) {
                         break;
-                    }
+                    } 
                     //moznadalje = std::find(std::begin(zakazane), std::end(zakazane), dir);
                 }
                 if (makeMove(x, y, dir, player))
@@ -431,6 +431,56 @@
         return true;
     }
 
+    bool checkwin(int player) {
+        bool finish;
+        if (player == 2) {
+            for (int u = 0; u < 5; u++) {
+                if (plansza[4][u].isTaken() == player) {
+                    finish = true;
+                }
+                else
+                {
+                    finish = false;
+                    break;
+                }
+            }
+
+            if (finish) {
+                if (plansza[3][0].isTaken() == player) {
+                    if (plansza[3][4].isTaken() == player) {
+                        return true;
+
+                    }
+                }
+            }
+        }
+        else if (player == 1) {
+            for (int u = 0; u < 5; u++) {
+                if (plansza[0][u].isTaken() == player) {
+                    finish = true;
+                }
+                else
+                {
+                    finish = false;
+                    break;
+                }
+            }
+
+            if (finish) {
+                if (plansza[1][0].isTaken() == player) {
+                    if (plansza[1][4].isTaken() == player) {
+                        return true;
+
+                    }
+                }
+            }
+        }
+
+        
+
+        return false;
+    }
+
     int task2(int ilosc) {
         
         int properBoard = 0; 
@@ -450,7 +500,7 @@
         return properBoard;
     }
 
-    void task1()
+    void task1(int ilosc)
     {
         int glebokosc = 0;
         int suma = 0;
@@ -469,57 +519,24 @@
             setBoard();
             while (!gamefinished) {
 
-                tura++;
+                depth++;
 
                 ruch(1,possMoves);
-
-                for (int u = 0; u < 5; u++) {
-                    if (plansza[0][u].isTaken() == 1) {
-                        finish = true;
-                    }
-                    else
-                    {
-                        finish = false;
-                        break;
-                    }
-                }
-
-                if (finish) {
-                    if (plansza[1][0].isTaken() == 1) {
-                        if (plansza[1][4].isTaken() == 1) {
-                            gamefinished = true;
-                            break;
-                        }
-                    }
+                gamefinished = checkwin(1);
+                if (gamefinished) {
+                    break;
                 }
 
 
                 ruch(2,possMoves);
-                depth++;
-               // std::cout << "Ruchy gracza 2: " << depth << std::endl;
-                //sprawdzamy czy gra sie skonczyla
-                for (int u = 0; u < 5; u++) {
-                    if (plansza[4][u].isTaken() == 2) {
-                        finish = true;
-                    }
-                    else
-                    {
-                        finish = false;
-                        break;
-                    }
+                gamefinished = checkwin(2);
+                if (gamefinished) {
+                    break;
                 }
-
-                if (finish) {
-                    if (plansza[3][0].isTaken() == 2) {
-                        if (plansza[3][4].isTaken() == 2) {
-                            gamefinished = true;
-                            break;
-                        }
-                    }
-                }
-
 
             }
+
+
             int buff = 0;
             for (int i = 0; i < possMoves.size(); i++) {
                 buff += possMoves[i];
@@ -527,35 +544,20 @@
 
             int srednia = buff / possMoves.size();
             possMoves.clear();
-           //  std::cout << "Srednia ruchow na ture: " << srednia << std::endl;
-           // std::cout << "WYGRANA" << std::endl;
             counter++;
             glebokosc += depth;
             suma += srednia;
 
-       if (counter == 101) {
-           break;
-       }
-            
-            
+        if (counter == ilosc+1) {
+            break;
+        }
+    }
 
-            /*for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    std::cout << plansza[i][j].isTaken();
-                }
-                std::cout << std::endl;
-            }*/
-            //printujemy graxcza ktory wygral
-           // std::cout << "srednia: " << srednia << std::endl;
-            }
-
-     suma = suma / 100;
-     glebokosc = glebokosc / 100;
+     suma = suma / ilosc;
+     glebokosc = glebokosc / ilosc;
      std::cout << "=====================================" << std::endl;
      std::cout << "=====================================" << std::endl;
-     std::cout << "ZAKONCZONO 100 SYMULACJI" << std::endl;
+     std::cout << "ZAKONCZONO " << ilosc << " SYMULACJI"<<std::endl;
      std::cout << "ZADANIE 1" << std::endl;
      std::cout << "Sredni branching factor: " << suma << std::endl;
      std::cout << "Srednia depth: " << glebokosc << std::endl;
@@ -572,7 +574,7 @@
 
         int gen = 1;
         int collector = 0;
-        task1();
+        task1(10);
         std::cout << "ZADANIE 2" << std::endl;
         std::cout << "Kombinacje mozliwych stanow planszy: 25^3" << std::endl;
         for (int i = 0; i < 10; i++) {
