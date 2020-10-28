@@ -233,9 +233,10 @@
             }
         }
 
-
+        int ruch = 0;
         // wybieramy losowy z znalezionych pionkow
         while (czydasiecokolwiek) {
+            
             index = rand() % (tablica.size());
             temp = tablica[index];
             liczba = temp[0];
@@ -243,7 +244,7 @@
             liczba = temp[1];
             y = (int)liczba - 48;
 
-            if (tablica.size() <= 3 && asd == 4) {
+            if (asd == 4 && ruch == tablica.size()) {
                 //std::cout << "nie ma ruchow" << std::endl;
                 break;
             }
@@ -285,7 +286,7 @@
                     zakazane[asd] = dir;
                     asd++;
                     if (asd == 4) {
-
+                        ruch++;
                         break;
                     }
 
@@ -574,7 +575,7 @@
 
         int gen = 1;
         int collector = 0;
-        task1(10);
+        task1(1000);
         std::cout << "ZADANIE 2" << std::endl;
         std::cout << "Kombinacje mozliwych stanow planszy: 25^3" << std::endl;
         for (int i = 0; i < 10; i++) {
