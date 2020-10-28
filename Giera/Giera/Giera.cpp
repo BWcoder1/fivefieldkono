@@ -202,32 +202,9 @@
             }
         }
 
-        for (int i = 0; i < tablica.size(); i++) {
-            if (tablica[i] == "block") {
-                tablica.erase(tablica.begin() + i);
-            }
-        }
-        for (int i = 0; i < tablica.size(); i++) {
-            if (tablica[i] == "block") {
-                tablica.erase(tablica.begin() + i);
-            }
-        }
-        for (int i = 0; i < tablica.size(); i++) {
-            if (tablica[i] == "block") {
-                tablica.erase(tablica.begin() + i);
-            }
-        }
-        for (int i = 0; i < tablica.size(); i++) {
-            if (tablica[i] == "block") {
-                tablica.erase(tablica.begin() + i);
-            }
-        }
-        for (int i = 0; i < tablica.size(); i++) {
-            if (tablica[i] == "block") {
-                tablica.erase(tablica.begin() + i);
-            }
-        }
-        for (int i = 0; i < tablica.size(); i++) {
+        int i = tablica.size() - 1;
+
+        for (i; i >= 0; i--) {
             if (tablica[i] == "block") {
                 tablica.erase(tablica.begin() + i);
             }
@@ -298,6 +275,10 @@
     }
 
     void randomGenerate() {
+
+       // srand(time(NULL));
+
+
         int x, y;
         for (int i = 0; i < 7; i++) {
             while (true) {
@@ -495,7 +476,8 @@
             if (checkBoard()) {
                 properBoard++;
             }
-            
+            Sleep(1);
+
         }
         std::cout << "Ilosc poprawnych plansz na " << ilosc << " losowan: " << properBoard << std::endl;
         return properBoard;
